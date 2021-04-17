@@ -4,18 +4,18 @@ set -e
 # Start up Eureka, ActiveMQ, Cassandra and Postgres
 cd external_tools/
 docker-compose up -d
-cassandra_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' cassandra)
+#cassandra_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' cassandra)
 postgres_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' postgres)
 
 #Test Cassandra and Postgres
-echo "Waiting for Cassandra and Postgres ..."
-while ! nc -z "${cassandra_ip}" 9042 ; do
-  sleep 1
-done
+#echo "Waiting for Cassandra and Postgres ..."
+#while ! nc -z "${cassandra_ip}" 9042 ; do
+#  sleep 1
+#done
 while ! nc -z "${postgres_ip}" 5432 ; do
   sleep 1
 done
-echo "Cassandra and Postgres are up and running..."
+echo "Postgres Cassandra is on local system are up and running..."
 cd ..
 
 # Start up Fineract CN microservices
