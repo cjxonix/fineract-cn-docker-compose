@@ -66,11 +66,8 @@ services:
         condition: on-failure
         delay: 10s
         max_attempts: 3
-      resources:
-        limits:
-          memory: 1000M
-        reservations:
-          memory: 1000M
+    mem_limit: 1000m
+    mem_reservation:500m
     volumes:
       - cassandra-volume:/var/lib/cassandra
 
